@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nandini Savanura | Iceberg Success Coach — Free Psychometry Test</title>
+<meta name="description" content="Discover the hidden 97% holding you back. Take the free Psychometry Assessment and unlock your true potential with Coach Nandini Savanura.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--deep:#0a2540;--teal:#14b8a6;--gold:#f59e0b;--light:#f0fdfa;--white:#fff;--gray:#64748b;--dark:#0f172a}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--dark);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.2}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--deep) 0%,#0e3a5c 50%,#134e6f 100%);color:var(--white);padding:100px 20px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);width:300px;height:200px;background:linear-gradient(180deg,rgba(20,184,166,.15) 0%,transparent 100%);border-radius:50% 50% 0 0;filter:blur(40px)}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);max-width:800px;margin:0 auto 20px}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:clamp(1rem,2.5vw,1.25rem);max-width:600px;margin:0 auto 40px;opacity:.9}
+.btn{display:inline-block;padding:16px 40px;border-radius:50px;font-weight:600;font-size:1.05rem;text-decoration:none;transition:all .3s;cursor:pointer;border:none;font-family:'Inter',sans-serif}
+.btn-gold{background:var(--gold);color:var(--deep)}
+.btn-gold:hover{background:#d97706;transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,158,11,.3)}
+.btn-teal{background:var(--teal);color:var(--white)}
+.btn-teal:hover{background:#0d9488;transform:translateY(-2px);box-shadow:0 8px 30px rgba(20,184,166,.3)}
+.btn-outline{background:transparent;border:2px solid var(--white);color:var(--white)}
+.btn-outline:hover{background:var(--white);color:var(--deep)}
+
+/* ICEBERG SECTION */
+.iceberg-section{padding:80px 20px;background:var(--light);text-align:center}
+.iceberg-section h2{font-size:clamp(1.75rem,4vw,2.5rem);color:var(--deep);margin-bottom:16px}
+.iceberg-section>p{max-width:600px;margin:0 auto 50px;color:var(--gray)}
+.iceberg-wrap{max-width:500px;margin:0 auto;position:relative}
+.waterline{width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--teal),transparent);position:relative;margin:0}
+.waterline::after{content:'~ ~ ~ water line ~ ~ ~';position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:.75rem;color:var(--teal);letter-spacing:3px;text-transform:uppercase;white-space:nowrap;background:var(--light);padding:0 12px}
+.ice-top{background:linear-gradient(180deg,#e0f7fa,#b2ebf2);border-radius:20px 20px 0 0;padding:30px 20px;margin-bottom:0}
+.ice-top h3{color:var(--deep);font-size:1.1rem;margin-bottom:12px}
+.ice-top .pct{font-size:2.5rem;font-weight:700;color:var(--teal)}
+.ice-top ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:12px}
+.ice-top ul li{background:rgba(255,255,255,.7);padding:6px 14px;border-radius:20px;font-size:.85rem;font-weight:500}
+.ice-bottom{background:linear-gradient(180deg,var(--deep),#061726);border-radius:0 0 40px 40px;padding:40px 20px;color:var(--white)}
+.ice-bottom h3{font-size:1.1rem;margin-bottom:12px;color:var(--gold)}
+.ice-bottom .pct{font-size:3rem;font-weight:700;color:var(--gold)}
+.ice-bottom ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:12px}
+.ice-bottom ul li{background:rgba(255,255,255,.1);padding:6px 14px;border-radius:20px;font-size:.85rem;border:1px solid rgba(255,255,255,.15)}
+.iceberg-quote{margin-top:40px;font-size:1.15rem;font-style:italic;color:var(--deep);font-family:'Playfair Display',serif}
+
+/* ASSESSMENT */
+.assess-section{padding:80px 20px;background:var(--white);text-align:center}
+.assess-section h2{font-size:clamp(1.75rem,4vw,2.5rem);color:var(--deep);margin-bottom:8px}
+.assess-section>p{color:var(--gray);margin-bottom:40px}
+#quiz-container{max-width:600px;margin:0 auto;min-height:350px}
+.progress-bar{width:100%;height:6px;background:#e2e8f0;border-radius:3px;margin-bottom:30px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:3px;transition:width .4s}
+.q-card{animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.q-num{font-size:.85rem;color:var(--teal);font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+.q-text{font-size:1.3rem;font-family:'Playfair Display',serif;color:var(--deep);margin-bottom:30px}
+.options{display:flex;flex-direction:column;gap:12px}
+.opt{background:var(--light);border:2px solid transparent;border-radius:12px;padding:16px 20px;text-align:left;cursor:pointer;transition:all .25s;font-size:1rem;font-family:'Inter',sans-serif}
+.opt:hover{border-color:var(--teal);background:#ccfbf1}
+.opt.selected{border-color:var(--teal);background:#ccfbf1;font-weight:600}
+
+/* RESULT */
+.result-card{animation:fadeUp .5s ease;text-align:center}
+.result-icon{font-size:4rem;margin-bottom:16px}
+.result-title{font-size:1.8rem;color:var(--deep);margin-bottom:8px;font-family:'Playfair Display',serif}
+.result-subtitle{color:var(--teal);font-weight:600;margin-bottom:20px}
+.result-desc{max-width:500px;margin:0 auto 30px;color:var(--gray);line-height:1.8}
+.result-cta{margin-top:20px}
+
+/* ABOUT */
+.about-section{padding:80px 20px;background:var(--light)}
+.about-inner{max-width:800px;margin:0 auto;text-align:center}
+.about-inner h2{font-size:clamp(1.75rem,4vw,2.5rem);color:var(--deep);margin-bottom:30px}
+.about-inner p{color:var(--gray);font-size:1.05rem;margin-bottom:20px;line-height:1.8}
+.about-stats{display:flex;justify-content:center;gap:40px;margin-top:40px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat .num{font-size:2.5rem;font-weight:700;color:var(--teal);font-family:'Playfair Display',serif}
+.stat .label{font-size:.85rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px}
+
+/* TESTIMONIALS */
+.testi-section{padding:80px 20px;background:var(--white);text-align:center}
+.testi-section h2{font-size:clamp(1.75rem,4vw,2.5rem);color:var(--deep);margin-bottom:50px}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:900px;margin:0 auto}
+.testi-card{background:var(--light);border-radius:16px;padding:30px;text-align:left}
+.testi-card .stars{color:var(--gold);font-size:1.1rem;margin-bottom:12px}
+.testi-card blockquote{font-style:italic;color:var(--dark);margin-bottom:16px;line-height:1.7}
+.testi-card .author{font-weight:600;color:var(--deep)}
+.testi-card .role{font-size:.85rem;color:var(--gray)}
+.testi-card .result{margin-top:8px;font-size:.9rem;color:var(--teal);font-weight:600}
+
+/* HOW IT WORKS */
+.how-section{padding:80px 20px;background:var(--deep);color:var(--white);text-align:center}
+.how-section h2{font-size:clamp(1.75rem,4vw,2.5rem);margin-bottom:50px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;max-width:900px;margin:0 auto}
+.step{padding:30px 20px}
+.step-num{width:50px;height:50px;border-radius:50%;background:var(--gold);color:var(--deep);font-weight:700;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.step h3{font-size:1.15rem;margin-bottom:8px}
+.step p{font-size:.9rem;opacity:.8}
+
+/* FAQ */
+.faq-section{padding:80px 20px;background:var(--light);text-align:center}
+.faq-section h2{font-size:clamp(1.75rem,4vw,2.5rem);color:var(--deep);margin-bottom:40px}
+.faq-list{max-width:700px;margin:0 auto;text-align:left}
+.faq-item{border-bottom:1px solid #e2e8f0;padding:20px 0}
+.faq-q{font-weight:600;color:var(--deep);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:1.05rem}
+.faq-q::after{content:'+';font-size:1.5rem;color:var(--teal);transition:transform .3s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s;color:var(--gray);line-height:1.7}
+.faq-item.open .faq-a{max-height:200px;padding-top:12px}
+
+/* FINAL CTA */
+.final-cta{padding:100px 20px;background:linear-gradient(135deg,var(--deep),#134e6f);color:var(--white);text-align:center}
+.final-cta h2{font-size:clamp(1.75rem,5vw,2.8rem);margin-bottom:16px}
+.final-cta h2 span{color:var(--gold)}
+.final-cta p{max-width:500px;margin:0 auto 40px;opacity:.9;font-size:1.1rem}
+
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:transform .3s;text-decoration:none}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:32px;height:32px;fill:#fff}
+
+/* FOOTER */
+footer{background:var(--dark);color:rgba(255,255,255,.5);text-align:center;padding:30px 20px;font-size:.85rem}
+footer a{color:var(--teal);text-decoration:none}
+
+@media(max-width:600px){
+.hero{padding:80px 16px 60px}
+.about-stats{gap:20px}
+.stat .num{font-size:2rem}
+.steps{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<h1>Discover Why You're Stuck — And <span>Unlock the Hidden 97%</span> of Your Success</h1>
+<p>Take the free 2-minute Psychometry Assessment and uncover the invisible forces shaping your life.</p>
+<a href="#assessment" class="btn btn-gold">Take the Free Assessment →</a>
+</section>
+
+<!-- ICEBERG MODEL -->
+<section class="iceberg-section">
+<h2>The Iceberg Success Model</h2>
+<p>What most people work on is just the tip. Real transformation happens below the surface.</p>
+<div class="iceberg-wrap">
+<div class="ice-top">
+<div class="pct">3%</div>
+<h3>What the World Sees</h3>
+<ul><li>Skills</li><li>Strategies</li><li>Knowledge</li><li>Actions</li></ul>
+</div>
+<div class="waterline"></div>
+<div class="ice-bottom">
+<div class="pct">97%</div>
+<h3>What Actually Drives Your Results</h3>
+<ul><li>Beliefs</li><li>Identity</li><li>Emotional Patterns</li><li>Self-Worth</li><li>Fear Patterns</li><li>Subconscious Programming</li></ul>
+</div>
+</div>
+<p class="iceberg-quote">"Most coaches fix the tip. Nandini transforms the foundation."</p>
+</section>
+
+<!-- ASSESSMENT -->
+<section class="assess-section" id="assessment">
+<h2>Free Psychometry Assessment</h2>
+<p>10 questions · 2 minutes · Instant results</p>
+<div id="quiz-container"></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+<div class="about-inner">
+<h2>Meet Coach Nandini Savanura</h2>
+<p>Nandini is a certified Success Coach and the creator of the <strong>Iceberg Success Model</strong> — a framework that goes beyond surface-level strategies to transform the hidden 97% that truly determines your results.</p>
+<p>After years of studying human psychology, behavioural patterns, and ancient wisdom traditions, Nandini developed a system that helps ambitious professionals break through invisible ceilings — the ones no amount of hard work alone can shatter.</p>
+<p>Her 10-Week Iceberg Success Program has helped hundreds of people achieve breakthroughs they thought were impossible — not by working harder, but by rewiring the foundation of how they think, feel, and show up.</p>
+<div class="about-stats">
+<div class="stat"><div class="num">500+</div><div class="label">Lives Transformed</div></div>
+<div class="stat"><div class="num">10</div><div class="label">Week Program</div></div>
+<div class="stat"><div class="num">97%</div><div class="label">Success is Hidden</div></div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+<h2>Success Stories</h2>
+<div class="testi-grid">
+<div class="testi-card">
+<div class="stars">★★★★★</div>
+<blockquote>"I spent years reading self-help books and nothing changed. After working with Nandini, I finally understood WHY. It was never about the strategies — it was about what was underneath. Game changer."</blockquote>
+<div class="author">Priya M.</div>
+<div class="role">Marketing Director</div>
+<div class="result">→ Promoted within 3 months</div>
+</div>
+<div class="testi-card">
+<div class="stars">★★★★★</div>
+<blockquote>"The Psychometry test alone gave me more clarity than 6 months of therapy. Nandini sees what you can't see about yourself. Her program is worth every rupee."</blockquote>
+<div class="author">Arjun K.</div>
+<div class="role">Startup Founder</div>
+<div class="result">→ 3x revenue in 8 weeks</div>
+</div>
+<div class="testi-card">
+<div class="stars">★★★★★</div>
+<blockquote>"I was the person who had everything on paper — good job, good family — but felt empty inside. Nandini helped me find what was missing beneath the surface."</blockquote>
+<div class="author">Sneha R.</div>
+<div class="role">Senior Engineer</div>
+<div class="result">→ Found purpose & clarity</div>
+</div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+<h2>How It Works</h2>
+<div class="steps">
+<div class="step">
+<div class="step-num">1</div>
+<h3>Take the Test</h3>
+<p>Complete the free 2-minute Psychometry Assessment above</p>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<h3>Get Your Profile</h3>
+<p>Discover which of 4 hidden patterns is running your life</p>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<h3>Free Discovery Call</h3>
+<p>30-minute deep dive with Coach Nandini into your results</p>
+</div>
+<div class="step">
+<div class="step-num">4</div>
+<h3>Transform</h3>
+<p>Join the 10-Week Iceberg Success Program and unlock your potential</p>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-list">
+<div class="faq-item"><div class="faq-q">Is the Psychometry Assessment really free?</div><div class="faq-a">Yes, 100% free. No credit card, no hidden charges. We believe everyone deserves to understand what's holding them back.</div></div>
+<div class="faq-item"><div class="faq-q">What happens on the Discovery Call?</div><div class="faq-a">It's a free, no-pressure 30-minute conversation where Nandini personally walks you through your assessment results, identifies your core hidden blocks, and maps a path forward — whether you join the program or not.</div></div>
+<div class="faq-item"><div class="faq-q">What is the Iceberg Success Model?</div><div class="faq-a">It's a framework developed by Nandini that addresses the 97% of success factors hidden beneath the surface — your beliefs, identity, emotional patterns, and subconscious programming. While most people only work on visible skills and strategies (3%), real breakthroughs happen below the waterline.</div></div>
+<div class="faq-item"><div class="faq-q">How much does the 10-Week Program cost?</div><div class="faq-a">The investment ranges from $1,000 to $2,000 depending on the level of support you choose. EMI options are available. The Discovery Call will help determine which option is right for you.</div></div>
+<div class="faq-item"><div class="faq-q">I've tried coaching before. How is this different?</div><div class="faq-a">Most coaching works on the tip of the iceberg — goals, habits, accountability. Nandini works on what's UNDERNEATH — the invisible patterns driving your results. That's why people who've "tried everything" still get breakthroughs with this approach.</div></div>
+</div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+<h2>Your Breakthrough Is <span>One Assessment</span> Away</h2>
+<p>Stop guessing. Discover what's really holding you back — and how to transform it.</p>
+<a href="#assessment" class="btn btn-gold">Take the Free Psychometry Test Now →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 Nandini Savanura · Iceberg Success Coaching · Powered by <a href="https://divinesuccessflow.com">Divine Success Flow</a></p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919XXXXXXXXX?text=Hi%20Nandini%2C%20I%20took%20the%20Psychometry%20Test%20and%20I%27d%20love%20to%20book%20my%20free%20Discovery%20Call!" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+<svg viewBox="0 0 32 32"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.926 15.926 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0zm9.32 22.616c-.396 1.116-1.97 2.042-3.21 2.312-.852.182-1.964.326-5.708-1.228-4.794-1.988-7.878-6.85-8.116-7.168-.228-.318-1.916-2.55-1.916-4.862 0-2.312 1.212-3.45 1.644-3.924.396-.432.924-.576 1.236-.576.306 0 .612.004.882.016.306.014.672-.108.996.792.342.936 1.164 3.246 1.266 3.48.102.234.18.51.036.822-.138.318-.216.51-.432.786-.216.276-.456.618-.648.828-.216.234-.444.486-.192.96.252.468 1.122 1.854 2.412 3.006 1.656 1.482 3.054 1.944 3.486 2.16.432.216.684.186.936-.108.258-.3 1.092-1.266 1.386-1.704.288-.432.582-.36.978-.216.396.144 2.508 1.182 2.94 1.398.432.216.72.324.828.504.102.18.102 1.044-.294 2.16z"/></svg>
+</a>
+
+<!-- FAQ TOGGLE -->
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{q.parentElement.classList.toggle('open')})});
+
+// PSYCHOMETRY QUIZ
+const questions=[
+{q:"When you set a big, ambitious goal, your very first thought is…",opts:["\"I can figure this out\" — excitement and energy","\"But what if I fail?\" — doubt creeps in fast","\"Let me plan every detail first\" — need full control","\"Where do I even start?\" — total overwhelm"]},
+{q:"When you face a significant failure or setback, you typically…",opts:["Analyse what went wrong and try again quickly","Replay it in your head for days, feeling terrible","Pretend it didn't bother you and push through","Avoid similar situations in the future"]},
+{q:"Your relationship with money and success feels like…",opts:["\"I deserve abundance and I'm building toward it\"","\"I work hard but money never seems to stay\"","\"Talking about money makes me uncomfortable\"","\"Rich people got lucky — hard work isn't enough\""]},
+{q:"When someone criticises your work or ideas, you…",opts:["Consider it and take what's useful","Feel hurt but don't show it","Immediately defend yourself","Quietly agree — they're probably right"]},
+{q:"When you imagine your biggest, wildest dream coming true…",opts:["You feel it's inevitable — just a matter of time","A voice says \"people like you don't get that\"","You feel excited but quickly \"be realistic\"","You can't even picture it clearly"]},
+{q:"When things are going really well in your life, you…",opts:["Enjoy it fully and build on the momentum","Wait for the other shoe to drop","Downplay it — don't want to jinx it","Feel guilty or undeserving"]},
+{q:"Your typical morning starts with…",opts:["Intention — journaling, exercise, or planning","Scrolling my phone and reacting to the day","Anxiety about the tasks ahead","Hitting snooze until the last possible minute"]},
+{q:"When someone asks \"What are your greatest strengths?\", you…",opts:["Answer confidently — you know your value","Struggle to name them without feeling boastful","List skills but not who you ARE","Deflect with humour or say \"I don't know\""]},
+{q:"Success, to you, truly means…",opts:["Freedom — to live, create, and give on my terms","Proving myself to people who doubted me","Security — no more financial stress","I'm honestly not sure anymore"]},
+{q:"Right now, the #1 thing holding you back is…",opts:["Nothing — I just need the right system and guidance","Fear — of failure, judgement, or the unknown","Myself — I self-sabotage even when I know better","Clarity — I don't know what I truly want"]}
+];
+
+const profiles=[
+{icon:"🔥",name:"The Hidden Achiever",sub:"You have the skills — but something invisible holds you back",desc:"You're talented, driven, and capable. On paper, you should be further ahead. But there's an invisible ceiling you keep hitting — and no amount of hard work breaks through it. Your iceberg's hidden 97% contains limiting beliefs about worthiness and a fear of being truly seen. The breakthrough you need isn't another strategy — it's permission to be as powerful as you actually are.",color:"#f59e0b"},
+{icon:"🌊",name:"The Overwhelmed Striver",sub:"You work harder than anyone — but results don't match the effort",desc:"You're the hardest worker in the room, yet success always feels one step away. Your hidden 97% is running on survival programming — a deep belief that you must struggle to earn your place. This pattern burns you out and keeps abundance at arm's length. Your transformation starts when you learn that ease and success aren't opposites.",color:"#14b8a6"},
+{icon:"🧊",name:"The Frozen Potential",sub:"You know you're capable of more — but can't seem to start",desc:"There's a version of you that you can almost see — confident, successful, free. But between here and there is a wall of invisible resistance. Your hidden 97% contains deep fear of change and a subconscious identity that keeps you 'safe' in your comfort zone. You don't need motivation. You need to melt the ice that's keeping your potential frozen.",color:"#6366f1"},
+{icon:"⚡",name:"The Breakthrough Ready",sub:"You're on the edge of transformation — you just need the right guide",desc:"You've done the inner work. You've read the books, tried the methods, invested in yourself. You're closer than you think. Your hidden 97% is almost fully aligned — you just need someone who can see your blind spots and give you the final push. You're not starting from zero. You're starting from a place of power.",color:"#ec4899"}
+];
+
+let current=0,scores=[0,0,0,0];
+const container=document.getElementById('quiz-container');
+
+function render(){
+if(current>=questions.length){showResult();return}
+const q=questions[current];
+container.innerHTML=`
+<div class="progress-bar"><div class="progress-fill" style="width:${(current/questions.length)*100}%"></div></div>
+<div class="q-card">
+<div class="q-num">Question ${current+1} of ${questions.length}</div>
+<div class="q-text">${q.q}</div>
+<div class="options">${q.opts.map((o,i)=>`<button class="opt" data-i="${i}">${o}</button>`).join('')}</div>
+</div>`;
+container.querySelectorAll('.opt').forEach(b=>{b.addEventListener('click',()=>{
+b.classList.add('selected');
+scores[parseInt(b.dataset.i)]++;
+setTimeout(()=>{current++;render()},350);
+})});
+}
+
+function showResult(){
+let max=0,idx=0;scores.forEach((s,i)=>{if(s>max){max=s;idx=i}});
+const p=profiles[idx];
+container.innerHTML=`
+<div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+<div class="result-card">
+<div class="result-icon">${p.icon}</div>
+<div class="result-title">${p.name}</div>
+<div class="result-subtitle">${p.sub}</div>
+<p class="result-desc">${p.desc}</p>
+<div class="result-cta">
+<p style="margin-bottom:20px;color:var(--gray)"><strong>Want to understand your full profile?</strong><br>Book a FREE 30-minute Discovery Call with Coach Nandini</p>
+<a href="https://wa.me/919XXXXXXXXX?text=Hi%20Nandini!%20I%20just%20took%20the%20Psychometry%20Test%20and%20my%20profile%20is%20${encodeURIComponent(p.name)}.%20I%27d%20love%20to%20book%20my%20free%20Discovery%20Call!" class="btn btn-teal" target="_blank">Book Free Discovery Call on WhatsApp →</a>
+<br><br>
+<button class="btn btn-outline" style="border-color:var(--deep);color:var(--deep);font-size:.9rem" onclick="current=0;scores=[0,0,0,0];render()">Retake Assessment</button>
+</div>
+</div>`;
+}
+
+render();
+</script>
+</body>
+</html>
