@@ -2,4 +2,3 @@
 builder = "NIXPACKS"
 
 [deploy]
-startCommand = "node server.js"
