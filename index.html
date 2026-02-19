@@ -901,6 +901,11 @@ method:'POST',
 headers:{'Content-Type':'application/json','Accept':'application/json'},
 body:JSON.stringify({name,email,phone,profile:p.name,timestamp:new Date().toISOString(),_subject:'🔔 New Nandini Assessment Lead: '+name,_captcha:'false',_template:'table'})
 }).catch(()=>{});
+fetch('https://formsubmit.co/ajax/nandini.success.coach@gmail.com',{
+method:'POST',
+headers:{'Content-Type':'application/json','Accept':'application/json'},
+body:JSON.stringify({name,email,phone,profile:p.name,timestamp:new Date().toISOString(),_subject:'🔔 New Nandini Assessment Lead: '+name,_captcha:'false',_template:'table'})
+}).catch(()=>{});
 }catch(err){}
 
 // Also store in localStorage as backup
