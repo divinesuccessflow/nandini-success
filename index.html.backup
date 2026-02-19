@@ -816,7 +816,7 @@ setTimeout(()=>{current++;render()},400);
 function showResult(){
 let max=0,idx=0;scores.forEach((s,i)=>{if(s>max){max=s;idx=i}});
 const p=profiles[idx];
-window._resultProfile=p;
+createConfetti();
 const progress=100;
 const offset=0;
 container.innerHTML=`
@@ -835,61 +835,17 @@ style="stroke-dasharray:${circumference};stroke-dashoffset:${offset}"/>
 <div class="progress-text">✓</div>
 </div>
 <div class="result-card">
-<div class="result-icon">🎉</div>
-<div class="result-title">Assessment Complete!</div>
-<div class="result-subtitle">Your personalised Psychometry Report is ready</div>
-<p class="result-desc" style="margin-bottom:30px">Enter your details below and Coach Nandini will send your <strong>detailed report</strong> along with a personalised video analysis directly to your WhatsApp.</p>
-<form id="leadForm" style="max-width:400px;margin:0 auto;text-align:left" onsubmit="return submitLead(event)">
-<div style="margin-bottom:16px">
-<label style="display:block;font-weight:600;color:var(--deep);margin-bottom:6px;font-size:0.95rem">Your Name *</label>
-<input type="text" id="leadName" required placeholder="Enter your full name" style="width:100%;padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:1rem;font-family:Inter,sans-serif;transition:border-color 0.3s;outline:none" onfocus="this.style.borderColor='#14b8a6'" onblur="this.style.borderColor='#e2e8f0'">
-</div>
-<div style="margin-bottom:16px">
-<label style="display:block;font-weight:600;color:var(--deep);margin-bottom:6px;font-size:0.95rem">Email Address *</label>
-<input type="email" id="leadEmail" required placeholder="your@email.com" style="width:100%;padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:1rem;font-family:Inter,sans-serif;transition:border-color 0.3s;outline:none" onfocus="this.style.borderColor='#14b8a6'" onblur="this.style.borderColor='#e2e8f0'">
-</div>
-<div style="margin-bottom:24px">
-<label style="display:block;font-weight:600;color:var(--deep);margin-bottom:6px;font-size:0.95rem">WhatsApp Number *</label>
-<input type="tel" id="leadPhone" required placeholder="+91 98867 27839" style="width:100%;padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:1rem;font-family:Inter,sans-serif;transition:border-color 0.3s;outline:none" onfocus="this.style.borderColor='#14b8a6'" onblur="this.style.borderColor='#e2e8f0'">
-</div>
-<button type="submit" class="btn btn-teal" style="width:100%;text-align:center;font-size:1.1rem;padding:16px">Send My Free Report via WhatsApp →</button>
-<p style="text-align:center;margin-top:12px;font-size:0.8rem;color:var(--gray)">🔒 Your details are 100% private. No spam, ever.</p>
-</form>
-</div>`;
-}
-
-function submitLead(e){
-e.preventDefault();
-const name=document.getElementById('leadName').value.trim();
-const email=document.getElementById('leadEmail').value.trim();
-const phone=document.getElementById('leadPhone').value.trim();
-const p=window._resultProfile;
-if(!name||!email||!phone)return false;
-
-// Send lead data to Nandini via WhatsApp pre-filled message
-const msg=encodeURIComponent(`Hi Nandini! I just completed the Psychometry Assessment on your website.\n\nMy details:\nName: ${name}\nEmail: ${email}\nWhatsApp: ${phone}\n\nMy Profile: ${p.name}\n\nPlease send me my detailed report! 🙏`);
-
-// Show thank you screen
-createConfetti();
-const container=document.getElementById('quiz-container');
-container.innerHTML=`
-<div class="result-card">
-<div class="result-icon">✅</div>
-<div class="result-title">Thank You, ${name.split(' ')[0]}!</div>
-<div class="result-subtitle">Your report is on its way</div>
-<p class="result-desc">Coach Nandini will personally send your <strong>detailed Psychometry Report</strong> to your WhatsApp within 24 hours.<br><br>In the meantime, click below to connect with Nandini directly:</p>
-<a href="https://wa.me/919886727839?text=${msg}" class="btn btn-teal" target="_blank" style="display:inline-block;margin-top:10px">💬 Message Nandini on WhatsApp</a>
+<div class="result-icon">${p.icon}</div>
+<div class="result-title">${p.name}</div>
+<div class="result-subtitle">${p.sub}</div>
+<p class="result-desc">${p.desc}</p>
+<div class="result-cta">
+<p style="margin-bottom:25px;color:var(--gray);font-weight:500"><strong style="color:var(--deep)">Want to understand your full profile?</strong><br>Book a FREE 30-minute Discovery Call with Coach Nandini</p>
+<a href="https://wa.me/919886727839?text=Hi%20Nandini!%20I%20just%20took%20the%20Psychometry%20Test%20and%20my%20profile%20is%20${encodeURIComponent(p.name)}.%20I%27d%20love%20to%20book%20my%20free%20Discovery%20Call!" class="btn btn-teal" target="_blank">Book Free Discovery Call on WhatsApp →</a>
 <br><br>
-<p style="font-size:0.9rem;color:var(--gray);margin-top:20px">Check your WhatsApp for your personalised report 📱</p>
+<button class="btn btn-outline" style="border-color:var(--deep);color:var(--deep);font-size:1rem;padding:14px 32px" onclick="current=0;scores=[0,0,0,0];render()">↺ Retake Assessment</button>
+</div>
 </div>`;
-
-// Also try to send data via a simple beacon/pixel (for future backend integration)
-try{
-const data=new URLSearchParams({name,email,phone,profile:p.name,timestamp:new Date().toISOString()});
-navigator.sendBeacon&&navigator.sendBeacon('https://hooks.zapier.com/placeholder',data);
-}catch(err){}
-
-return false;
 }
 
 render();
