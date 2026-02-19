@@ -834,25 +834,25 @@ style="stroke-dasharray:${circumference};stroke-dashoffset:${offset}"/>
 </svg>
 <div class="progress-text">✓</div>
 </div>
-<div class="result-card">
-<div class="result-icon">🎉</div>
-<div class="result-title">Assessment Complete!</div>
-<div class="result-subtitle">Your personalised Psychometry Report is ready</div>
-<p class="result-desc" style="margin-bottom:30px">Enter your details below and Coach Nandini will send your <strong>detailed report</strong> along with a personalised video analysis directly to your WhatsApp.</p>
-<form id="leadForm" style="max-width:400px;margin:0 auto;text-align:left" onsubmit="return submitLead(event)">
+<div class="result-card" style="overflow:visible">
+<div class="result-icon" style="position:relative;z-index:2">🎉</div>
+<div class="result-title" style="position:relative;z-index:2">Assessment Complete!</div>
+<div class="result-subtitle" style="position:relative;z-index:2">Your personalised Psychometry Report is ready</div>
+<p class="result-desc" style="margin-bottom:30px;position:relative;z-index:2">Enter your details below and Coach Nandini will send your <strong>detailed report</strong> along with a personalised video analysis directly to your WhatsApp.</p>
+<form id="leadForm" style="max-width:400px;margin:0 auto;text-align:left;position:relative;z-index:10" onsubmit="return submitLead(event)">
 <div style="margin-bottom:16px">
 <label style="display:block;font-weight:600;color:var(--deep);margin-bottom:6px;font-size:0.95rem">Your Name *</label>
-<input type="text" id="leadName" required placeholder="Enter your full name" style="width:100%;padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:1rem;font-family:Inter,sans-serif;transition:border-color 0.3s;outline:none" onfocus="this.style.borderColor='#14b8a6'" onblur="this.style.borderColor='#e2e8f0'">
+<input type="text" id="leadName" required placeholder="Enter your full name" style="width:100%;padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:1rem;font-family:Inter,sans-serif;transition:border-color 0.3s;outline:none;background:#fff;position:relative;z-index:10" onfocus="this.style.borderColor='#14b8a6'" onblur="this.style.borderColor='#e2e8f0'">
 </div>
 <div style="margin-bottom:16px">
 <label style="display:block;font-weight:600;color:var(--deep);margin-bottom:6px;font-size:0.95rem">Email Address *</label>
-<input type="email" id="leadEmail" required placeholder="your@email.com" style="width:100%;padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:1rem;font-family:Inter,sans-serif;transition:border-color 0.3s;outline:none" onfocus="this.style.borderColor='#14b8a6'" onblur="this.style.borderColor='#e2e8f0'">
+<input type="email" id="leadEmail" required placeholder="your@email.com" style="width:100%;padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:1rem;font-family:Inter,sans-serif;transition:border-color 0.3s;outline:none;background:#fff;position:relative;z-index:10" onfocus="this.style.borderColor='#14b8a6'" onblur="this.style.borderColor='#e2e8f0'">
 </div>
 <div style="margin-bottom:24px">
 <label style="display:block;font-weight:600;color:var(--deep);margin-bottom:6px;font-size:0.95rem">WhatsApp Number *</label>
-<input type="tel" id="leadPhone" required placeholder="+91 98867 27839" style="width:100%;padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:1rem;font-family:Inter,sans-serif;transition:border-color 0.3s;outline:none" onfocus="this.style.borderColor='#14b8a6'" onblur="this.style.borderColor='#e2e8f0'">
+<input type="tel" id="leadPhone" required placeholder="+91 98867 27839" style="width:100%;padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;font-size:1rem;font-family:Inter,sans-serif;transition:border-color 0.3s;outline:none;background:#fff;position:relative;z-index:10" onfocus="this.style.borderColor='#14b8a6'" onblur="this.style.borderColor='#e2e8f0'">
 </div>
-<button type="submit" class="btn btn-teal" style="width:100%;text-align:center;font-size:1.1rem;padding:16px">Send My Free Report via WhatsApp →</button>
+<button type="submit" class="btn btn-teal" style="width:100%;text-align:center;font-size:1.1rem;padding:16px;position:relative;z-index:10">Send My Free Report via WhatsApp →</button>
 <p style="text-align:center;margin-top:12px;font-size:0.8rem;color:var(--gray)">🔒 Your details are 100% private. No spam, ever.</p>
 </form>
 </div>`;
@@ -883,10 +883,31 @@ container.innerHTML=`
 <p style="font-size:0.9rem;color:var(--gray);margin-top:20px">Check your WhatsApp for your personalised report 📱</p>
 </div>`;
 
-// Also try to send data via a simple beacon/pixel (for future backend integration)
+// Store lead in Google Sheets + send email notification via SheetDB/Apps Script
+// For now, store locally and send via formsubmit.co (free, no signup)
 try{
-const data=new URLSearchParams({name,email,phone,profile:p.name,timestamp:new Date().toISOString()});
-navigator.sendBeacon&&navigator.sendBeacon('https://hooks.zapier.com/placeholder',data);
+// formsubmit.co sends email notification on each submission (free, no signup needed)
+const formData=new FormData();
+formData.append('name',name);
+formData.append('email',email);
+formData.append('phone',phone);
+formData.append('profile',p.name);
+formData.append('timestamp',new Date().toISOString());
+formData.append('_subject','🔔 New Nandini Assessment Lead: '+name);
+formData.append('_captcha','false');
+formData.append('_template','table');
+fetch('https://formsubmit.co/ajax/divinesuccessflow@gmail.com',{
+method:'POST',
+headers:{'Content-Type':'application/json','Accept':'application/json'},
+body:JSON.stringify({name,email,phone,profile:p.name,timestamp:new Date().toISOString(),_subject:'🔔 New Nandini Assessment Lead: '+name,_captcha:'false',_template:'table'})
+}).catch(()=>{});
+}catch(err){}
+
+// Also store in localStorage as backup
+try{
+const leads=JSON.parse(localStorage.getItem('nandini_leads')||'[]');
+leads.push({name,email,phone,profile:p.name,timestamp:new Date().toISOString()});
+localStorage.setItem('nandini_leads',JSON.stringify(leads));
 }catch(err){}
 
 return false;
